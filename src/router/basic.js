@@ -1,7 +1,10 @@
 export default [
-    { 
-        path: '/basic/departmentSearch', 
-        name: 'departmentSearch',
-        component: () => import('@/components/BasicInfoMaintenance/departmentSearch'),
-    },
+	{
+		path: '/basic',
+		component: () => import('@/views/basicInfoMaintenance'),
+		children: [{
+			path: '/basic/departmentSearch',
+			component: () => import('@/components/BasicInfoMaintenance/departmentSearch'),
+		}]
+	}
 ]

@@ -2,7 +2,7 @@
     <div id="App">
     <div id="building">
         <div id="loginBox">
-            <form id="login" action=" " method="post">
+            <div id="login">
                 <h1>系统登陆</h1>
                 <div class="form">
                 <div class="item">
@@ -12,8 +12,8 @@
                     <input type="password" placeholder="Password" name="userPassword" id="userPassword">
                 </div>
                 </div>
-                <button type="submit" id="btn">Login</button>
-            </form>
+                <button id="btn" @click="login">Login</button>
+            </div>
         </div>
     </div>
     </div>
@@ -21,7 +21,12 @@
 
 <script>
 export default {
-    name: "App"
+    name: "App",
+    methods:{
+        login(){
+            this.$router.push('/basic');
+        }
+    }
 }
 </script>
 

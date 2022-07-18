@@ -2,16 +2,18 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/Login.vue'
 import Basic from './basic'
-
+import Drugs from './drugs'
 Vue.use(VueRouter)
 
 const routes = [
   { 
-    path: '/login', 
+    path: '/', 
     component: Login 
   },
   //基础信息维护相关
-  ...Basic
+
+  ...Basic,
+  ...Drugs
 ]
 
 const router = new VueRouter({
@@ -19,5 +21,6 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
 
 export default router
