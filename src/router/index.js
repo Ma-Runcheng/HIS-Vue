@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '@/views/Login.vue'
 import Basic from './basic'
 import Drugs from './drugs'
+import Finance from './finance'
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,7 +14,9 @@ const routes = [
   //基础信息维护相关
 
   ...Basic,
-  ...Drugs
+  ...Drugs,
+  ...Finance,
+
 ]
 
 const router = new VueRouter({
