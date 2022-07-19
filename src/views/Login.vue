@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     @import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
     #building{
         background-image: url('../assets/img/login_bg.png');
@@ -38,11 +38,6 @@ export default {
         height:100%;
         position:fixed;
         background-size:100% 100%;
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
     }
 
     #App {

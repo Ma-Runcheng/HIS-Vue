@@ -72,9 +72,9 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.home-container {
-		height: 100%;
+		height: 100vh;
 	}
 
 	.el-header {
