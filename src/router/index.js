@@ -12,10 +12,14 @@ const routes = [
     component: Login 
   },
   //基础信息维护相关
-
+{ path:"/register",
+  name:"register",
+  component:()=>import("../views/register.vue")
+ },
   ...Basic,
   ...Drugs,
   ...Finance,
+ 
 
 ]
 
