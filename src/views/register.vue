@@ -6,12 +6,20 @@
 
 <el-container style="height: 100%; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+  	<div>
+					<img src="../assets/logo.png" alt="" style="height:60px" />
+					<span>东软云医院</span>
+				</div>
     <el-menu :default-openeds="['1', '3']">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>现场挂号</template>
         
-          <el-menu-item index="1-1">现场挂号</el-menu-item>
-          <el-menu-item index="1-2">退号</el-menu-item>   
+          <el-menu-item index="1-1">
+          	
+          	<router-link to="../register/Registering">现场挂号</router-link></el-menu-item>
+          <el-menu-item index="1-2">
+          	 <router-link to="../register/BackNumber">退号</router-link>
+          </el-menu-item>   
         </el-submenu>
         
         
@@ -48,7 +56,8 @@
       <el-dropdown>
         <i class="el-icon-setting" style="margin-right: 15px"></i>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>登录</el-dropdown-item>
+          <el-dropdown-item>
+          	 <router-link to="/">登录</router-link> </el-dropdown-item>
           <el-dropdown-item>注册</el-dropdown-item>
           <el-dropdown-item>退出</el-dropdown-item>
         </el-dropdown-menu>
@@ -57,9 +66,9 @@
     </el-header>
     
     <el-main>
-      <el-table :data="tableData">
-		<h3>欢迎！</h3>
-      </el-table>
+      
+		<h3>欢迎进入挂号页面！</h3>
+      
     </el-main>
   </el-container>
 </el-container>
