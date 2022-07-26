@@ -49,24 +49,38 @@
   
 	</el-card>
 	
-	<el-popover
-  placement="top"
-  width="160"
-  v-model="visible">
-  <p>确认退号</p>
-  <div style="text-align: right; margin: 0">
-    <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-    <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
-  </div>
-  <el-button slot="reference"style="display:block;margin:0 auto">退号</el-button>
-</el-popover>
-	
-	</div>
+	<template>
+  <el-button  @click="open">退号</el-button>
 </template>
-
+</div>
+</template>
 <script>
-	
+  export default {
+    methods: {
+      open() {
+        this.$confirm('此操作将退号, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '退号成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消'
+          });
+        });
+      }
+    }
+  }
 </script>
+	
+	
+
 
 <style>
 </style>

@@ -5,7 +5,7 @@
 	    <router-link to="/basic">基础信息维护</router-link> |
 	    <router-link to="/drugs">药房</router-link> |
 	    <router-link to="/finance">门诊财务管理</router-link>|
-	    <router-link to="/register">挂号</router-link>
+	    <router-link to="/register">挂号系统</router-link>
     </div>
 	  <router-view></router-view>
   </div>

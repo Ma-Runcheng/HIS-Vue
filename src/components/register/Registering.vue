@@ -104,14 +104,21 @@
           resource: '',
           desc: ''
         }
+            
+
       }
     },
     methods: {
       onSubmit() {
-        console.log('submit!');
+      this.$notify({
+          title: '挂号成功',
+          message: '您的病历号是xxxxx',
+          duration: 0
+        });
+      }
       }
     }
-  }
+  
 </script>
 <style>
 </style>
