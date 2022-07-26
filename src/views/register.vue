@@ -1,52 +1,36 @@
 <template>
-
-
-
-
-
 <el-container style="height: 100%; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
   	<div>
 					<img src="../assets/logo.png" alt="" style="height:60px" />
 					<span>东软云医院</span>
-				</div>
+		</div>
     <el-menu :default-openeds="['1', '3']">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>现场挂号</template>
-        
           <el-menu-item index="1-1">
-          	
           	<router-link to="/register/Registering">现场挂号</router-link></el-menu-item>
           <el-menu-item index="1-2">
           	 <router-link to="/register/BackNumber">退号</router-link>
           </el-menu-item>   
         </el-submenu>
-        
-        
-        
-      </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>费用管理</template>
           <el-menu-item index="2-1">收费</el-menu-item>
           <el-menu-item index="2-2">退费</el-menu-item>
-           <el-menu-item index="2-3">患者费用查询</el-menu-item>
-           </el-submenu>
+          <el-menu-item index="2-3">患者费用查询</el-menu-item>
+      </el-submenu>
          
       
       <!--
       	发票
       -->
-        
-        
-     </el-submenu>
+
 
       <el-submenu index="3">
         <template slot="title"><i class="el-icon-setting"></i>发票管理</template>
-       
-      
           <el-menu-item index="3-1">发票重新打印</el-menu-item>
-            <el-menu-item index="3-1">发票补充打印</el-menu-item>
-        </el-submenu>
+          <el-menu-item index="3-1">发票补充打印</el-menu-item>
       </el-submenu>
     </el-menu>
   </el-aside>
@@ -66,9 +50,7 @@
     </el-header>
     
     <el-main>
-      
-		<h1>欢迎进入挂号页面！</h1>
-      
+		  <router-view></router-view>
     </el-main>
   </el-container>
 </el-container>
