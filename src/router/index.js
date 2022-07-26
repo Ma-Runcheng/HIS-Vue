@@ -4,7 +4,7 @@ import Login from '@/views/Login.vue'
 import Basic from './basic'
 import Drugs from './drugs'
 import Finance from './finance'
-import register from './register'
+
 
 Vue.use(VueRouter)
 

@@ -16,9 +16,9 @@
         
           <el-menu-item index="1-1">
           	
-          	<router-link to="../register/Registering">现场挂号</router-link></el-menu-item>
+          	<router-link to="/register/Registering">现场挂号</router-link></el-menu-item>
           <el-menu-item index="1-2">
-          	 <router-link to="../register/BackNumber">退号</router-link>
+          	 <router-link to="/register/BackNumber">退号</router-link>
           </el-menu-item>   
         </el-submenu>
         
@@ -67,7 +67,7 @@
     
     <el-main>
       
-		<h3>欢迎进入挂号页面！</h3>
+		<h1>欢迎进入挂号页面！</h1>
       
     </el-main>
   </el-container>
