@@ -1,5 +1,7 @@
 <template>
-hello
+    <div id="App">
+        Hello
+    </div>
 </template>
 
 <script>

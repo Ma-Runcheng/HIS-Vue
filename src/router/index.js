@@ -4,6 +4,7 @@ import Login from '@/views/Login.vue'
 import Basic from './basic'
 import Drugs from './drugs'
 import Finance from './finance'
+import Register from './register'
 
 
 Vue.use(VueRouter)
@@ -14,13 +15,10 @@ const routes = [
     component: Login 
   },
   //基础信息维护相关
-{ path:"/register",
-  name:"register",
-  component:()=>import("../views/register.vue")
- },
   ...Basic,
   ...Drugs,
   ...Finance,
+  ...Register
  
 
 ]

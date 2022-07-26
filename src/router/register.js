@@ -1,4 +1,3 @@
-
 export default [
 	{
 		path: '/register',
@@ -13,7 +12,7 @@ export default [
 				component: () => import('@/components/register/BackNumber'),
 			},
 			{
-				path: '/regitser/invoicemangage',
+				path: '/register/invoicemangage',
 				component: () => import('@/components/register/InvoiceManage'),
 			},
 			{
