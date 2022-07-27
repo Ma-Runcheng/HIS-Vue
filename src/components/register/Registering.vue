@@ -30,7 +30,7 @@
     <el-input v-model="form.home"></el-input>
   </el-form-item>
   <el-form-item label="挂号科室">
-    <el-select v-model="form.region" placeholder="请选择挂号科室">
+    <el-select v-model="form.keshi" placeholder="请选择挂号科室">
       <el-option label="外科" value="waike"></el-option>
       <el-option label="内科" value="neike"></el-option>
       <el-option label="耳鼻喉科" value="erbihouke"></el-option>
@@ -44,7 +44,7 @@
   
   
     <el-form-item label="挂号医生">
-    <el-select v-model="form.region" placeholder="请选择医生">
+    <el-select v-model="form.doc" placeholder="请选择医生">
       <el-option label="张三" value="zhangsan"></el-option>
       <el-option label="李四" value="lisi"></el-option>
       <el-option label="王五" value="wangwu"></el-option>
