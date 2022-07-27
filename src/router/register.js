@@ -12,7 +12,7 @@ export default [
 				component: () => import('@/components/register/BackNumber'),
 			},
 			{
-				path: '/register/invoicemangage',
+				path: '/register/invoicemanage',
 				component: () => import('@/components/register/InvoiceManage'),
 			},
 			{

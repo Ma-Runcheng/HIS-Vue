@@ -16,9 +16,19 @@
         </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>费用管理</template>
-          <el-menu-item index="2-1">收费</el-menu-item>
-          <el-menu-item index="2-2">退费</el-menu-item>
-          <el-menu-item index="2-3">患者费用查询</el-menu-item>
+          <el-menu-item index="2-1">
+          <router-link to="/register/expensemanage">收费</router-link>
+          </el-menu-item>
+          <el-menu-item index="2-2">
+          	
+          <router-link to="/register/expensemanage">退费</router-link>
+          	
+          </el-menu-item>
+          
+          <el-menu-item index="2-3">
+          <router-link to="/register/expensemanage">费用查询</router-link>
+          	
+          </el-menu-item>
       </el-submenu>
          
       
@@ -29,8 +39,14 @@
 
       <el-submenu index="3">
         <template slot="title"><i class="el-icon-setting"></i>发票管理</template>
-          <el-menu-item index="3-1">发票重新打印</el-menu-item>
-          <el-menu-item index="3-1">发票补充打印</el-menu-item>
+          <el-menu-item index="3-1">
+          <router-link to="/register/invoicemanage">发票重新打印</router-link>
+          </el-menu-item>
+          <el-menu-item index="3-1">
+          	
+          <router-link to="/register/invoicemanage">发票补充打印</router-link>
+          	
+          </el-menu-item>
       </el-submenu>
     </el-menu>
   </el-aside>
@@ -50,6 +66,8 @@
     </el-header>
     
     <el-main>
+    	
+    	<h1>欢迎进入挂号界面</h1>
 		  <router-view></router-view>
     </el-main>
   </el-container>
