@@ -1,16 +1,16 @@
 <template>
-  <div id="App">
+  <div id="app">
     <el-container class="home-container">
-      <el-header :height="30">
+      <!-- 头部顶栏 -->
+      <el-header>
         <Header></Header>
       </el-header>
+      <!-- 内容 -->
       <el-container>
-        <el-aside width="230px" class="aside-item">
+        <!-- 侧边栏 -->
+        <el-aside width="200px">
           <h3>基础信息维护</h3>
-          <el-menu
-            class="el-menu-vertical-demo"
-            @open="handleOpen"
-            @close="handleClose">
+          <el-menu class="el-menu-vertical-demo">
             <el-submenu index="1">
               <template slot="title">
                     <i class="el-icon-location"></i>
@@ -49,12 +49,11 @@
             </el-menu-item>
           </el-menu>
         </el-aside>
-
-        <el-main class="main-item">
+        <!-- 显示内容 -->
+        <el-main>
           <router-view></router-view>
         </el-main>
       </el-container>
-      
     </el-container>
   </div>
 </template>
@@ -71,23 +70,26 @@ export default {
 </script>
 
 <style scoped>
-.aside-item{
-  position: relative;
-}
-.main-item{
-  width: 100%;
-}
-
-.home-container{
-  height: 100%;
-}
-
 .el-header{
-  display: flex;
-  height: 30px;
+  position : relative;
+  width: 100%;
+  height : 60px;
 }
 
-.router-link-active {
-   text-decoration: none;
- }
+.el-aside {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  }
+
+.el-main {
+  position: absolute;
+  left: 200px;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  overflow-y: scroll;
+  }
 </style>

@@ -1,6 +1,10 @@
 <template>
 <div id="App">
-    <h1>基础信息维护</h1>
+    <div class="welcome">
+        <h1 class="welcome-item">基础信息维护</h1>
+        <h1 class="welcome-item">欢迎使用基础信息维护功能</h1>
+    </div>
+    
 </div>
 </template>
 
@@ -10,6 +14,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    #App{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 
+    .welcome-item{
+        color: red;
+    }
 </style>
