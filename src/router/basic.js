@@ -8,6 +8,15 @@ export default [
 		},{
 			path: '/basic/departmentSearch',
 			component: () => import('@/components/BasicInfoMaintenance/departmentSearch'),
+		},{
+			path: '/basic/addDepartment',
+			component: () => import('@/components/BasicInfoMaintenance/newDepartment'),
+		},{
+			path: '/basic/registLevelSearch',
+			component: () => import('@/components/BasicInfoMaintenance/registLevelSearch'),
+		},{
+			path: '/basic/addRegistLevel',
+			component: () => import('@/components/BasicInfoMaintenance/newRegistLevel'),
 		}
 		]
 	}

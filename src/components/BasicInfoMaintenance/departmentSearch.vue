@@ -18,7 +18,7 @@
                 <div style="float: left;">
                     <el-button @click="handleEdit(scope.$index)">编辑</el-button>
                     <template>
-                        <el-popconfirm title="这是一段内容确定删除吗？" @confirm="handleDelete(scope.$index, scope.row)">
+                        <el-popconfirm title="确定删除吗？" @confirm="handleDelete(scope.$index, scope.row)">
                             <el-button slot="reference" >删除</el-button>
                         </el-popconfirm>
                     </template>
@@ -28,7 +28,7 @@
     </el-table>
     
     <!-- Dialog 组件 -->
-    <el-dialog :visible.sync="dialogFormVisible">
+    <el-dialog title="编辑" :visible.sync="dialogFormVisible">
         <el-form :model="form">
             <el-form-item label="部门代号" label-width="120px">
                 <el-input v-model="form.deptCode" autocomplete="off" ></el-input>
@@ -117,7 +117,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .table{
     width: 100%;
 }
