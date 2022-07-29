@@ -4,8 +4,8 @@ import Login from '@/views/Login.vue'
 import Basic from './basic'
 import Drugs from './drugs'
 import Finance from './finance'
+import Outpatient from './outpatient'
 import Register from './register'
-
 
 Vue.use(VueRouter)
 
@@ -18,8 +18,8 @@ const routes = [
   ...Basic,
   ...Drugs,
   ...Finance,
+  ...Outpatient,
   ...Register
- 
 
 ]
 
