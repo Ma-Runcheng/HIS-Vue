@@ -5,12 +5,14 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
+import echarts from 'echarts'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/CSS/global.css'
 
 Vue.use(VueAxios,axios)
 Vue.prototype.$axios = axios;
 Vue.use(ElementUI)
+Vue.prototype.$echarts = echarts;
 
 Vue.config.productionTip = false
 new Vue({

@@ -8,40 +8,61 @@
 		<!-- 卡片区域 -->
 		<el-card>
 			<!-- 搜索框 -->
-			  <el-row>
-				  <el-col :span="14">
-					  <el-input placeholder="请输入内容" v-model="input" class="input-with-select">
-					      <el-select v-model="select" slot="prepend" placeholder="请选择">
-					        <el-option label="科目编码" value="1"></el-option>
-					        <el-option label="科目名称" value="2"></el-option>
-					      </el-select>
-					      <el-button slot="append" icon="el-icon-search"></el-button>
-					    </el-input>
+			<el-row :gutter="40">
+				<el-col :span="8">
+					<el-input v-model="input" placeholder="请输入费用科目名称" prefix-icon="el-icon-search"></el-input>
+				</el-col>
+				<el-col :span="8">
+					<el-input v-model="inputcode" placeholder="请输入费用科目编码" prefix-icon="el-icon-search" ></el-input>
+				</el-col>
+				<el-col :span="8">
+					分类：<el-select v-model="typevalue" placeholder="请选择类别" >
+							<el-option
+							      v-for="item in options"
+							      :key="item.tpyevalue"
+							      :label="item.label"
+							      :value="item.typevalue">
+							    </el-option>
+							</el-select>
 				  </el-col>
 			  </el-row>
+			  <hr/>
+			 <el-row :gutter="90">
+				<el-col :span="4" :offset="8">
+					<el-button  @click="search" type="primary">查询</el-button>
+				</el-col>
+				<el-col :span="4">
+					<el-button  @click="clear" type="info">清空</el-button>
+			   </el-col>
+			   </el-row>
 		</el-card>
 		<hr>
-		<el-button type="primary">增加费用科目</el-button>
-		<el-button type="success">修改费用科目</el-button>
-		<el-button type="warning">删除费用科目</el-button>
+		<el-button @click="addexpense" type="primary">增加费用科目</el-button>
+		<el-button @click="modifyexpense" type="success">修改费用科目</el-button>
+		<el-button @click="delteexpense" type="warning">删除费用科目</el-button>
 		<hr>
 		<el-card>
 			<el-table
-			    :data="tableData"
-			    stripe
+			    :data="news" 
+				stripe="true"
 			    style="width: 100%">
+				<el-table-column
+				  prop="index"
+				  label="序号"
+				  width="180">
+				</el-table-column>
 			    <el-table-column
-			      prop="code"
+			      prop= "code"
 			      label="科目编码"
 			      width="180">
 			    </el-table-column>
-			    <el-table-column
+			   <el-table-column
 			      prop="name"
-			      label="名称"
+			      label="科目名称"
 			      width="180">
 			    </el-table-column>
 			    <el-table-column
-			      prop="detail"
+			      prop="word"
 			      label="明细">
 			    </el-table-column>
 			  </el-table>
@@ -50,14 +71,58 @@
 </template>
 
 <script>
-	export default{
-		data(){
-			return {
-				input:'',
-				select:''
-			}
+export default{
+	data() {
+		 return {
+		     options: [{
+				typevalue: '选项1',
+				label: '检验费'
+		    }, 
+			{
+				typevalue: '选项2',
+				label: '材料费'
+		    }],
+		    typevalue: '',
+			input: '',
+			inputcode: '',
+			select: '',
+			news: [],
 		}
-	}
+	},
+	methods: {
+		clear(){
+			this.input = ''
+			this.inputcode = ''
+			this.typevalue = ''
+		},
+		search() {
+			let key = "80260ef4829e27922398bb79ebbed8fd"
+			this.$axios.get("http://api.tianapi.com/wxhottopic/index?key=" + key).then((res) => {
+				console.log(res.data.newslist)
+				this.news = res.data.newslist
+			})
+		},
+		addexpense() {
+			
+		},
+		modifyexpense() {
+			
+		},
+		delteexpense(){
+			
+		},
+		
+	},
+	created() {
+			//通过axios框架，获取服务器数据---天行数据
+			let that = this
+			let key = "80260ef4829e27922398bb79ebbed8fd"
+			this.$axios.get("http://api.tianapi.com/wxhottopic/index?key=" + key).then(function(res){
+				console.log(res.data.newslist);
+				that.news = res.data.newslist
+			})
+		}
+}
 </script>
 
 <style>

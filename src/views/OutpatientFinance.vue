@@ -66,5 +66,41 @@ export default {
 </script>
 
 <style scoped>
-
+	html,body,#app,.el-container{
+				/*设置内部填充为0，几个布局元素之间没有间距*/
+				padding: 0px;
+				 /*外部间距也是如此设置*/
+				margin: 0px;
+				/*统一设置高度为100%*/
+				height: 100vh;
+			}
+			
+		.el-header>div {
+			display: flex;
+			align-items: center;
+		}
+			
+		.el-header {
+			background-color: #373d41;
+			display: flex;
+			justify-content: space-between;
+			padding-left: 0;
+			align-items: center;
+			color: #fff;
+			font-size: 20px;
+		}
+		
+		
+		.el-main {
+			background-color: #EAEDF1;
+		}
+		
+		.el-aside {
+			background-color: #333744;
+		}
+		
+		.el-aside>.el-menu {
+			/* 去除边界 */
+			border-right: none;
+		}
 </style>
