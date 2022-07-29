@@ -5,6 +5,8 @@ import Basic from './basic'
 import Drugs from './drugs'
 import Finance from './finance'
 import Outpatient from './outpatient'
+import Register from './register'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,11 +15,11 @@ const routes = [
     component: Login 
   },
   //基础信息维护相关
-
   ...Basic,
   ...Drugs,
   ...Finance,
-  ...Outpatient
+  ...Outpatient,
+  ...Register
 
 ]
 

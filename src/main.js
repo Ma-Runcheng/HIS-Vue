@@ -10,6 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/CSS/global.css'
 
 Vue.use(VueAxios,axios)
+Vue.prototype.$axios = axios;
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts;
 
