@@ -1,7 +1,6 @@
 <template>
 <div id="App">
     <div class="welcome">
-        <h1 class="welcome-item">基础信息维护</h1>
         <h1 class="welcome-item">欢迎使用基础信息维护功能</h1>
     </div>
     

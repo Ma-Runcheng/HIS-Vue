@@ -3,19 +3,17 @@
 <h1>用户查询</h1><hr/>
 <div>
     <!-- 表格 -->
-    <el-table class="table"
-    :data="employee_Info.filter(data => !search || data.deptName.toLowerCase().includes(search.toLowerCase()) 
-                            || data.registName.toLowerCase().includes(search.toLowerCase()))">
+    <el-table class="table" :data="employee_Info">
         <el-table-column type="index" width="50"> </el-table-column>
         <el-table-column label="所属科室" prop="department.deptName"></el-table-column>
         <el-table-column label="挂号级别" prop="registLevel.registName"></el-table-column>
-        <el-table-column label="是否参与排班" prop="switchValue"></el-table-column>
+        <el-table-column label="是否参与排班" prop="schedulingId"></el-table-column>
         <el-table-column label="真实姓名" prop="realname"></el-table-column>
         <el-table-column label="密码" prop="password"></el-table-column>
         <el-table-column align="right">
             <!-- eslint-disable-next-line -->
             <template slot="header" slot-scope="scope" >
-                <el-input v-model="search" size="mini" placeholder="输入关键字搜索"/>
+                <el-input v-model="search" size="mini" @change="searchName" placeholder="输入关键字搜索"/>
             </template>
             <template slot-scope="scope">
                 <div style="float: left;">
@@ -110,14 +108,14 @@ export default {
         updateTable(){
             this.axios.get('http://localhost:8080/employee/allEmployee').then(res=>{
                 this.employee_Info = res.data;
-                for(let item of this.employee_Info){
-                    if(item.schedulingId != 0){
-                        item.switchValue = "是";
-                    }else{
-                        item.switchValue = "否";
-                    }
-                }
+                console.log(this.employee_Info[0]);
+                this.employee_Info.map((item) => {
+                    if(item.schedulingId == 0) item.schedulingId = "否";
+                    else item.schedulingId = "是";
+                    return item; 
+                })
             });
+            
         },
 
         handleEdit(index){
@@ -212,6 +210,16 @@ export default {
             if(switchValue == false){
                 this.form.schedulingId = 0;
             }
+        },
+
+        searchName(){
+            this.axios.get('http://localhost:8080/employee/allEmployee',{
+                params:{
+                    name: this.search
+                }
+            }).then(res=>{
+                this.employee_Info = res.data;
+            })
         }
     }
 }

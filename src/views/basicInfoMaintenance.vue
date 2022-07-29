@@ -13,7 +13,6 @@
           <el-menu class="el-menu-vertical">
             <el-submenu index="1">
               <template slot="title">
-                    <i class="el-icon-location"></i>
                     <span>科室管理</span>      
               </template>
               <el-menu-item-group>
@@ -24,50 +23,53 @@
                   <el-menu-item index="1-2">新增</el-menu-item>
                 </router-link>
               </el-menu-item-group>
-          </el-submenu>
+            </el-submenu>
             <el-submenu index="2">
               <template slot="title">
-                    <i class="el-icon-location"></i>
                     <span>用户管理</span>      
               </template>
               <el-menu-item-group>
                 <router-link to="/basic/employeeSearch">
                   <el-menu-item index="2-1">查询</el-menu-item>
                 </router-link>
-                <router-link to="/basic/addDepartment">
+                <router-link to="/basic/addEmployee">
                   <el-menu-item index="2-2">新增</el-menu-item>
                 </router-link>
               </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="3">
+            </el-submenu>
+            <el-submenu index="3">
+                <template slot="title">
+                      <span>挂号级别管理</span>      
+                </template>
+                <el-menu-item-group>
+                  <router-link to="/basic/registLevelSearch">
+                    <el-menu-item index="3-1">查询</el-menu-item>
+                  </router-link>
+                  <router-link to="/basic/addRegistLevel">
+                    <el-menu-item index="3-2">新增</el-menu-item>
+                  </router-link>
+                </el-menu-item-group>
+            </el-submenu>
+            <router-link to="/basic/diseaseSearch">
+              <el-menu-item index="4">
+                  <span slot="title">诊断目录管理</span>                
+              </el-menu-item>
+            </router-link>
+            <el-submenu index="5">
               <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span>挂号级别管理</span>      
+                <span>非药品收费项目管理</span>      
               </template>
               <el-menu-item-group>
-                <router-link to="/basic/registLevelSearch">
-                  <el-menu-item index="3-1">查询</el-menu-item>
+                <router-link to="/basic/nondrugCharge">
+                  <el-menu-item index="5-1">查询</el-menu-item>
                 </router-link>
                 <router-link to="/basic/addRegistLevel">
-                  <el-menu-item index="3-2">新增</el-menu-item>
+                  <el-menu-item index="5-2">新增</el-menu-item>
                 </router-link>
               </el-menu-item-group>
-          </el-submenu>
-            <el-menu-item index="4">
-              <i class="el-icon-setting"></i>
-              <span slot="title">诊断目录管理</span>
-            </el-menu-item>
-            <el-menu-item index="5">
-              <i class="el-icon-setting"></i>
-              <span slot="title">非药品收费项目管理</span>
-            </el-menu-item>
+            </el-submenu>
             <el-menu-item index="6">
-              <i class="el-icon-setting"></i>
               <span slot="title">医生排班管理</span>
-            </el-menu-item>
-            <el-menu-item index="7">
-              <i class="el-icon-setting"></i>
-              <span slot="title">常数级别管理</span>
             </el-menu-item>
           </el-menu>
         </el-aside>

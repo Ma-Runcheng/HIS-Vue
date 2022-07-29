@@ -20,7 +20,15 @@ export default [
 		},{
 			path: '/basic/employeeSearch',
 			component: () => import('@/components/BasicInfoMaintenance/employeeSearch'),
-		}
-		]
+		},{
+			path: '/basic/addEmployee',
+			component: () => import('@/components/BasicInfoMaintenance/newEmployee'),
+		},{
+			path: '/basic/diseaseSearch',
+			component: () => import('@/components/BasicInfoMaintenance/diseaseSearch'),
+		},{
+			path: '/basic/nondrugCharge',
+			component: () => import('@/components/BasicInfoMaintenance/nondrugCharge'),
+		}]
 	}
 ]
