@@ -74,21 +74,6 @@ export default {
            dialogFormVisible: false
         }
     },
-    computed: {
-        registFee: function() {
-            var fee = this.form.registFee;
-            var pos = fee.indexOf('.');
-            if(pos < 0){
-                pos = fee.length;
-                fee += '.';
-            }
-            while(fee.length <= pos + 2){
-                fee += '0';
-            }
-            console.log(fee);
-            return fee;
-        }
-    },
     mounted() {
         this.updateTable();
     },

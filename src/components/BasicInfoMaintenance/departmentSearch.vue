@@ -4,7 +4,8 @@
 <div>
     <!-- 表格 -->
     <el-table class="table"
-    :data="dept_Info.filter(data => !search || data.deptName.toLowerCase().includes(search.toLowerCase()))">
+    :data="dept_Info.filter(data => !search || data.deptName.toLowerCase().includes(search.toLowerCase()) 
+                            || data.deptCode.toLowerCase().includes(search.toLowerCase()))">
         <el-table-column type="index" width="50"> </el-table-column>
         <el-table-column label="科室代号" prop="deptCode"></el-table-column>
         <el-table-column label="科室名" prop="deptName"></el-table-column>

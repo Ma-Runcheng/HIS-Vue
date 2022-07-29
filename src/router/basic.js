@@ -17,6 +17,9 @@ export default [
 		},{
 			path: '/basic/addRegistLevel',
 			component: () => import('@/components/BasicInfoMaintenance/newRegistLevel'),
+		},{
+			path: '/basic/employeeSearch',
+			component: () => import('@/components/BasicInfoMaintenance/employeeSearch'),
 		}
 		]
 	}

@@ -25,10 +25,20 @@
                 </router-link>
               </el-menu-item-group>
           </el-submenu>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              <span slot="title">用户管理</span>
-            </el-menu-item>
+            <el-submenu index="2">
+              <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span>用户管理</span>      
+              </template>
+              <el-menu-item-group>
+                <router-link to="/basic/employeeSearch">
+                  <el-menu-item index="2-1">查询</el-menu-item>
+                </router-link>
+                <router-link to="/basic/addDepartment">
+                  <el-menu-item index="2-2">新增</el-menu-item>
+                </router-link>
+              </el-menu-item-group>
+          </el-submenu>
           <el-submenu index="3">
               <template slot="title">
                     <i class="el-icon-location"></i>
