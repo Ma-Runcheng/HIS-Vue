@@ -29,6 +29,15 @@ export default [
 		},{
 			path: '/basic/nondrugCharge',
 			component: () => import('@/components/BasicInfoMaintenance/nondrugCharge'),
+		},{
+			path: '/basic/newNondrugCharge',
+			component: () => import('@/components/BasicInfoMaintenance/newNondrugCharge'),
+		},{
+			path: '/basic/showScheduling',
+			component: () => import('@/components/BasicInfoMaintenance/showScheduling'),
+		},{
+			path: '/basic/newScheduling',
+			component: () => import('@/components/BasicInfoMaintenance/newScheduling'),
 		}]
 	}
 ]

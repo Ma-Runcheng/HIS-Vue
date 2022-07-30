@@ -21,7 +21,15 @@
             </el-select>
         </el-form-item>
         <el-form-item label="参与排班" label-width="120px">
-            <el-switch v-model="switchValue" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+            <el-switch v-model="switchValue" active-color="#13ce66" inactive-color="#ff4949" @change="schedulingChange"></el-switch>
+        </el-form-item>
+        <el-form-item label="排班规则" label-width="120px"  v-if="switchValue">
+            <el-select v-model="schedulingNameId" filterable remote reserve-keyword placeholder="请输入排班规则"
+                :remote-method="remoteScheduling"
+                :loading="loading">
+                <el-option v-for="item in schedulingOptions" :key="item.id" :label="item.ruleName" :value="item.id">
+                </el-option>
+            </el-select>
         </el-form-item>
         <el-form-item label="真实姓名" label-width="120px">
             <el-input v-model="form.realname" autocomplete="off"></el-input>
@@ -52,11 +60,14 @@ export default {
            },
            deptNameId: "",
            registNameId: "",
+           schedulingNameId: "",
            deptNames: [],
            registNames: [],
+           schedulingNames: [],
            loading: false,
            deptOptions: [],
            registOptions: [],
+           schedulingOptions: [],
            switchValue: true
         }
     },
@@ -68,14 +79,18 @@ export default {
         this.axios.get('http://localhost:8080/registLevel/allRegistLevel').then(res=>{
             this.registNames = JSON.parse(JSON.stringify(res.data,['id','registName']));
         });
+
+        this.axios.get('http://localhost:8080/scheduling/allScheduling').then(res=>{
+            this.schedulingNames = JSON.parse(JSON.stringify(res.data,['id','ruleName']));
+        });
     },
     methods: {
         submitForm() {
             this.form.deptmentId = this.deptNameId;
             this.form.registLevelId = this.registNameId;
-            if(this.switchValue == true){
-                this.form.schedulingId = 1;
-            }else this.form.schedulingId = 0;
+            if(this.switchValue == false){
+                this.form.schedulingId = 0;
+            }else this.form.schedulingId = this.schedulingNameId;
 
             this.axios.post('http://localhost:8080/employee/addEmployee',this.form).then(res=>{
                 if(res.data == true){
@@ -112,6 +127,26 @@ export default {
                 }, 200);
             } else {
                 this.options = [];
+            }
+        },
+
+        remoteScheduling(query){
+            if (query !== '') {
+                this.loading = true;
+                setTimeout(() => {
+                    this.loading = false;
+                    this.schedulingOptions = this.schedulingNames.filter(item => {
+                    return item.ruleName.toLowerCase().indexOf(query.toLowerCase()) > -1;
+                    });
+                }, 200);
+            } else {
+                this.registOptions = [];
+            }
+        },
+
+        schedulingChange(switchValue){
+            if(switchValue == false){
+                this.form.schedulingId = 0;
             }
         },
     }

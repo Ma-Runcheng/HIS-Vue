@@ -3,7 +3,8 @@
     <el-container class="home-container">
       <!-- 头部顶栏 -->
       <el-header>
-        <Header></Header>
+        <h1>东软云医院HIS系统</h1>
+        <el-button type="primary" @click="logout">退出</el-button>
       </el-header>
       <!-- 内容 -->
       <el-container>
@@ -13,7 +14,8 @@
           <el-menu class="el-menu-vertical">
             <el-submenu index="1">
               <template slot="title">
-                    <span>科室管理</span>      
+                <i class="fa fa-hospital-o"></i>&nbsp;
+                <span>科室管理</span>      
               </template>
               <el-menu-item-group>
                 <router-link to="/basic/departmentSearch">
@@ -26,7 +28,8 @@
             </el-submenu>
             <el-submenu index="2">
               <template slot="title">
-                    <span>用户管理</span>      
+                <i class="fa fa-user-md"></i>&nbsp;
+                <span>用户管理</span>      
               </template>
               <el-menu-item-group>
                 <router-link to="/basic/employeeSearch">
@@ -39,7 +42,8 @@
             </el-submenu>
             <el-submenu index="3">
                 <template slot="title">
-                      <span>挂号级别管理</span>      
+                  <i class="fa fa-stethoscope"></i>&nbsp;
+                  <span>挂号级别管理</span>      
                 </template>
                 <el-menu-item-group>
                   <router-link to="/basic/registLevelSearch">
@@ -52,25 +56,38 @@
             </el-submenu>
             <router-link to="/basic/diseaseSearch">
               <el-menu-item index="4">
-                  <span slot="title">诊断目录管理</span>                
+                <i class="fa fa-medkit"></i>&nbsp;
+                <span slot="title">诊断目录管理</span>                
               </el-menu-item>
             </router-link>
             <el-submenu index="5">
               <template slot="title">
-                <span>非药品收费项目管理</span>      
+                <i class="fa fa-ambulance"></i>&nbsp;
+                <span>非药品项目管理</span>      
               </template>
               <el-menu-item-group>
                 <router-link to="/basic/nondrugCharge">
                   <el-menu-item index="5-1">查询</el-menu-item>
                 </router-link>
-                <router-link to="/basic/addRegistLevel">
+                <router-link to="/basic/newNondrugCharge">
                   <el-menu-item index="5-2">新增</el-menu-item>
                 </router-link>
               </el-menu-item-group>
             </el-submenu>
-            <el-menu-item index="6">
-              <span slot="title">医生排班管理</span>
-            </el-menu-item>
+            <el-submenu index="6">
+              <template slot="title">
+                <i class="fa fa-bell"></i>&nbsp;
+                <span>医生排班管理</span>      
+              </template>
+              <el-menu-item-group>
+                <router-link to="/basic/showScheduling">
+                  <el-menu-item index="6-1">排班计划</el-menu-item>
+                </router-link>
+                <router-link to="/basic/newScheduling">
+                  <el-menu-item index="6-2">设置排班规则</el-menu-item>
+                </router-link>
+              </el-menu-item-group>
+            </el-submenu>
           </el-menu>
         </el-aside>
         <!-- 显示内容 -->
@@ -83,12 +100,12 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-
 export default {
     name: 'app',
-    components: { 
-        Header 
+    methods: {
+      logout(){
+        this.$router.push('/');
+      }
     }
 }
 </script>
@@ -98,6 +115,10 @@ export default {
   position : relative;
   width: 100%;
   height : 60px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0;
+  align-items: center;
 }
 
 .el-aside {
@@ -116,4 +137,8 @@ export default {
   bottom: 0;
   overflow-y: scroll;
   }
+
+.el-button{
+  margin-right:20px;
+}
 </style>
