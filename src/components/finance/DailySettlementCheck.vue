@@ -13,9 +13,9 @@
 					收款员：<el-select v-model="label" placeholder="请选择收款员" >
 							<el-option
 							      v-for="item in options"
-							      :key="item.label"
+							      :key="item.tpyevalue"
 							      :label="item.label"
-							      :value="item.label">
+							      :value="item.typevalue">
 							    </el-option>
 							</el-select>
 				</el-col>
@@ -180,19 +180,19 @@ export default{
 				value1: '',
 			
 		     options: [{
-				
+				typevalue: '赵某某',
 				label: '赵某某'
 			},
 			{
-				
+				typevalue: '钱某某',
 				label: '钱某某'
 			}, 
 			{
-				
+				typevalue: '孙某某',
 				label: '孙某某'
 			}, 
 			{
-				
+				typevalue: '李某某',
 				label: '李某某'
 		    }],
 			select: '',
