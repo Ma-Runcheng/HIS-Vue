@@ -19,6 +19,8 @@
 		</el-descriptions>
 		<hr>
 		<el-table :data="medicaltechnology" border show-summary style="width: 100%">
+			<el-table-column type="selection" width="55">
+			</el-table-column>
 			<el-table-column prop="" label="检验编码" width="180">
 			</el-table-column>
 			<el-table-column prop="" label="检验名称">
@@ -45,7 +47,7 @@
 				</el-form-item>
 			</el-form>
 			<el-table :data="medicaltechnology" style="width: 100%%">
-				<el-table-column type="" width="55">
+				<el-table-column type="selection" width="55">
 				</el-table-column>
 				<el-table-column prop="" label="检验编码">
 				</el-table-column>

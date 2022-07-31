@@ -17,11 +17,71 @@
 				       </template>
 			</el-descriptions-item>
 		</el-descriptions>
+		<hr>
+		<el-table :data="prescription" border show-summary style="width: 100%">
+			<el-table-column type="selection" width="55">
+			</el-table-column>
+			<el-table-column prop="" label="药品名称" width="180">
+			</el-table-column>
+			<el-table-column prop="" label="药品规格">
+			</el-table-column>
+			<el-table-column prop="" label="单价">
+			</el-table-column>
+			<el-table-column prop="" label="单价">
+			</el-table-column>
+			<el-table-column prop="" label="用法用量">
+			</el-table-column>
+			<el-table-column prop="" label="数量">
+			</el-table-column>
+		</el-table>
+		<el-button @click="">删除</el-button>
+		<el-button @click="dialogVisible=true">添加</el-button><br>
+		<hr>
+		<el-dialog title="新增处方" :visible.sync="dialogVisible" width="50%">
+			<el-form :inline="true">
+				<el-form-item>
+					<el-input v-model="drug.name" placeholder="请输入药品名称"></el-input>
+				</el-form-item>
+				<el-form-item>
+					<el-input v-model="drug.code" placeholder="请输入拼音助记编码"></el-input>
+				</el-form-item>
+				<el-form-item>
+					<el-button @click="" icon="el-icon-search">搜索</el-button>
+				</el-form-item>
+			</el-form>
+			<el-table :data="medicaltechnology" style="width: 100%%">
+				<el-table-column type="selection" width="55">
+				</el-table-column>
+				<el-table-column prop="" label="药品编码">
+				</el-table-column>
+				<el-table-column prop="" label="药品名称">
+				</el-table-column>
+				<el-table-column prop="" label="药品规格">
+				</el-table-column>
+				<el-table-column prop="" label="单价">
+				</el-table-column>
+				<el-table-column prop="" label="用法用量">
+				</el-table-column>
+			</el-table>
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="dialogVisible = false">取 消</el-button>
+				<el-button type="primary" @click="">添 加</el-button>
+			</span>
+		</el-dialog>
+		<el-button type="primary" @click="">开设处方</el-button>
+		<el-button type="primary" @click="">清空处方</el-button>
 	</div>
 </template>
 
 <script>
 	export default {
+		data(){
+			return{
+				dialogVisible:false,
+				drug:[],
+				
+			}
+		},
 	  methods: {
 		goBack(){
 			this.$router.push("/outpatient")

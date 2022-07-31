@@ -17,11 +17,29 @@
 				       </template>
 			</el-descriptions-item>
 		</el-descriptions>
+		<hr>
+		<el-form ref="form" :model="confirmform" label-width="80px">
+		  <el-form-item label="诊断结果">
+		    <el-input v-model="confirmform.result"></el-input>
+		  </el-form-item>
+		  <el-form-item label="治疗意见">
+		    <el-input v-model="confirmform.opinion"></el-input>
+		  </el-form-item>
+		  <el-form-item>
+		    <el-button type="primary" @click="">提交</el-button>
+		    <el-button>清空</el-button>
+		  </el-form-item>
+		</el-form>
 	</div>
 </template>
 
 <script>
 	export default {
+		data(){
+			return{
+				confirmform:[]
+			}
+		},
 	  methods: {
 		goBack(){
 			this.$router.push("/outpatient")
