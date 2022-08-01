@@ -12,9 +12,10 @@ import './assets/font-awesome-4.7.0/css/font-awesome.min.css'
                         
 
 Vue.use(VueAxios,axios)
-Vue.prototype.$axios = axios;
+Vue.prototype.$axios=axios;
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts;
+
 
 Vue.config.productionTip = false
 new Vue({

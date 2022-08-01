@@ -3,7 +3,7 @@
 		<!--头部区域 -->
 		<el-header>
 			<div>
-				<img src="../../assets/logo.png" alt="" style="height:60px" />
+				<img src="../assets/logo.png" alt="" style="height:60px" />
 				<span>东软云医院</span>
 			</div>
 			<el-button type="info" @click="logout">退出</el-button>

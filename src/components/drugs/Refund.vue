@@ -59,7 +59,8 @@
 		data(){
 			return {
 				input:'',
-				select:''
+				select:'',
+				tableData: [],
 			}
 		}
 	}

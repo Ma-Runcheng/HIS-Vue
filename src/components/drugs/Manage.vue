@@ -198,6 +198,7 @@
 			//提交修改结果
 			async updateConfirm(){
 				this.updateDialogVisible=false
+				console.log(this.updateDrug);
 				await this.$axios.get("http://localhost:8080/drug/update",{
 					params:{
 						id:this.updateDrug.id,

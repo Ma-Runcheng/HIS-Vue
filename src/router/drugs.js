@@ -1,4 +1,4 @@
-import Drugs from '../components/drugs/Drugs.vue'
+import Drugs from '../views/Drugs.vue'
 import Give from '../components/drugs/Give.vue'
 import Refund from '../components/drugs/Refund.vue'
 import Manage from '../components/drugs/Manage.vue'
