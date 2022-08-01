@@ -5,32 +5,59 @@
 		  <el-breadcrumb-item :to="{ path: '/register' }">现场挂号</el-breadcrumb-item>
 		  <el-breadcrumb-item>挂号</el-breadcrumb-item>
 		</el-breadcrumb>
-
+<!--
+	作者：offline
+	时间：2022-08-02
+	描述：姓名
+-->
 <el-form ref="form" :model="form" label-width="80px">
   <el-form-item label="姓名">
     <el-input v-model="form.name"></el-input>
   </el-form-item>
   
+  <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：性别
+  -->
     <el-form-item label="性别">
-    <el-select v-model="form.region" placeholder="输入性别">
-      <el-option label="男" value="sex1"></el-option>
-      <el-option label="女" value="sex2"></el-option>
+    <el-select v-model="form.sex" placeholder="--输入性别--">
+      <el-option label="男" value="1"></el-option>
+      <el-option label="女" value="2"></el-option>
        </el-select>
   </el-form-item>
+  <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：年龄or出生日期
+  -->
   
-  
-    <el-form-item label="年龄">
+    <el-form-item label="--年龄--">
     <el-input v-model="form.age"></el-input>
   </el-form-item>
-   
+   <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：身份证号
+  -->
    <el-form-item label="身份证号">
     <el-input v-model="form.id"></el-input>
   </el-form-item>
+  <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：住址
+  -->
    <el-form-item label="家庭住址">
     <el-input v-model="form.home"></el-input>
   </el-form-item>
+  <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：挂号科室
+  -->
   <el-form-item label="挂号科室">
-    <el-select v-model="form.keshi" placeholder="请选择挂号科室">
+    <el-select v-model="form.keshi" placeholder="--请选择挂号科室--">
       <el-option label="外科" value="waike"></el-option>
       <el-option label="内科" value="neike"></el-option>
       <el-option label="耳鼻喉科" value="erbihouke"></el-option>
@@ -41,7 +68,11 @@
     </el-select>
   </el-form-item>
   
-  
+  <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：挂号医生
+  -->
   
     <el-form-item label="挂号医生">
     <el-select v-model="form.doc" placeholder="请选择医生">
@@ -52,7 +83,11 @@
        
     </el-select>
   </el-form-item>
-  
+  <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：挂号时间
+  -->
   <el-form-item label="挂号时间">
     <el-col :span="11">
       <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
@@ -63,14 +98,22 @@
     </el-col>
     
     
-    
+    <!--
+    	作者：offline
+    	时间：2022-08-02
+    	描述：是否需要发票
+    -->
     
   </el-form-item>
   <el-form-item label="需要发票">
     <el-switch v-model="form.invoice"></el-switch>
   </el-form-item>
   
-  
+  <!--
+  	作者：offline
+  	时间：2022-08-02
+  	描述：收费类别
+  -->
   
 
   </el-form-item>
@@ -80,7 +123,7 @@
       <el-radio label="现金"></el-radio>
     </el-radio-group>
   </el-form-item>
-  <el-form-item label="备注">
+  <el-form-item label="家庭住址">
     <el-input type="textarea" v-model="form.desc"></el-input>
   </el-form-item>
   <el-form-item>
@@ -112,7 +155,7 @@
       onSubmit() {
       this.$notify({
           title: '挂号成功',
-          message: '您的病历号是xxxxx',
+          message: '请进行缴费',
           duration: 0
         });
       }

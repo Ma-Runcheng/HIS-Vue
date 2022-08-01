@@ -13,6 +13,24 @@
           <el-menu-item index="1-2">
           	 <router-link to="/register/BackNumber">退号</router-link>
           </el-menu-item>   
+          
+          
+          <!--
+          	作者：offline
+          	时间：2022-08-03
+          	描述：test
+          	
+          -->
+          
+          <router-link to="/register/showCaseNumber"> <el-menu-item index="1-3">
+          	 查询病历号
+          </el-menu-item>  </router-link>
+          
+          
+          
+          
+          
+          
         </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>费用管理</template>

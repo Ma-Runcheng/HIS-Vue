@@ -115,17 +115,9 @@ export default {
                 }
                 this.updateTable();
             });
-        },
-
-        searchName(){
-            this.axios.get('http://localhost:8080/disease/allDisease',{
-                params:{
-                    name: this.search
-                }
-            }).then(res=>{
-                this.disease_Info = res.data;
-            })
         }
+
+       
     }
 }
 </script>

@@ -12,6 +12,10 @@ export default [
 				component: () => import('@/components/register/BackNumber'),
 			},
 			{
+				path: '/register/showCaseNumber',
+				component: () => import('@/components/register/ShowRegister'),
+			},
+			{
 				path: '/register/invoicemanage',
 				component: () => import('@/components/register/InvoiceManage'),
 			},
