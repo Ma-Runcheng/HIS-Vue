@@ -258,10 +258,6 @@ export default{
 					that.$message.error('修改失败');
 				}
 			})
-			this.Form.code=''
-			this.Form.name=''
-			this.Form.price=0
-			this.Form.description=''
 		},
 		delSelectionRows(){
 			if(!this.show || this.delArr.length==0)
