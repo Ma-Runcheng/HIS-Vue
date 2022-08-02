@@ -7,14 +7,16 @@
 			<el-descriptions-item>
 				 <template slot="label">
 				         <i class="el-icon-document"></i>
-				         病历号
+				         病历号 
 				       </template>
+					   {{$store.state.patientinfo.caseNumber}}
 			</el-descriptions-item>
 			<el-descriptions-item>
 				 <template slot="label">
 				         <i class="el-icon-user"></i>
 				         姓名
 				       </template>
+					   {{$store.state.patientinfo.realName}}
 			</el-descriptions-item>
 		</el-descriptions>
 		<hr>

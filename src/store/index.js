@@ -5,13 +5,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-	  expenseinfo:{}
+	  expenseinfo:{},
+	  patientinfo:{
+		  caseNumber:'',
+		  realName:''
+	  }
   },
   getters: {
   },
   mutations: {
 	  expenseinfo(state, e){
 	  		  state.expenseinfo = e
+	  },
+	  patientinfo(state,data){
+		  state.patientinfo=data
 	  }
   },
   actions: {

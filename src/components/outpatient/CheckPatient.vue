@@ -15,20 +15,24 @@
 				<el-button @click="search" icon="el-icon-search">搜索</el-button>
 			</el-form-item>
 		</el-form>
-		<el-table :data="patientinfo" style="width: 100%" >
+		<el-table :data="patient" style="width: 100%" >
 			<el-table-column type="index" label="编号" width="200">
 			</el-table-column>
 			<el-table-column prop="caseNumber" label="患者病历号" width="200">
 			</el-table-column>
 			<el-table-column prop="realName" label="患者姓名" width="200px">
 			</el-table-column>
+			<el-table-column prop="visitDate" label="挂号时间" width="200px">
+			</el-table-column>
 			<el-table-column label="操作">
-				<el-button @click="">叫号</el-button>
+				<template slot-scope="scope">
+					<el-button @click="callNumber(scope.row)">看诊</el-button>
+				</template>
 			</el-table-column>
 		</el-table>
 		<el-pagination
 		  layout="prev, pager, next"
-		  :total="50"
+		  :total="patient.length"
 		  background="blue"
 		  align="center"
 		  >
@@ -42,14 +46,17 @@
 			return {
 				cn: '',
 				rn: '',
-				patientinfo:[],
+				patient:[],
 			}
 		},
 		methods: {
 			search() {
 				this.axios.get('http://localhost:8080/register/selectRegister?cn='+this.cn+'&rn='+this.rn).then((res)=>{
-					this.patientinfo=res.data
+					this.patient=res.data
 				})
+			},
+			callNumber(row){
+				this.$store.commit('patientinfo',row)
 			},
 			goBack() {
 				this.$router.push("/outpatient")

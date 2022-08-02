@@ -27,13 +27,8 @@
 						</template>
 						<el-menu-item index="/outpatient/checkpatient">查看患者</el-menu-item>
 						<el-menu-item index="/outpatient/medicalrecord">门诊病历首页</el-menu-item>
-						<el-menu-item index="/outpatient/checkrequest">检查申请</el-menu-item>
-						<el-menu-item index="/outpatient/inspectionrequest">检验申请</el-menu-item>
-						<el-menu-item index="/outpatient/checkresult">检查结果</el-menu-item>
-						<el-menu-item index="/outpatient/inspectionresult">检验结果</el-menu-item>
 						<el-menu-item index="/outpatient/confirm">门诊确诊</el-menu-item>
 						<el-menu-item index="/outpatient/prescription">开设处方</el-menu-item>
-						<el-menu-item index="/outpatient/dispositionrequest">处置申请</el-menu-item>
 						<el-menu-item index="/outpatient/querycost">患者费用查询</el-menu-item>
 					</el-submenu>
 				</el-menu>
@@ -51,6 +46,14 @@
 			return{
 				
 			}
+		},
+		created() {
+			if(sessionStorage.getItem('store')){
+				this.$store.replaceState(Object.assign({},this.$store.state,JSON.parse(sessionStorage.getItem('store'))))
+			}
+			window.addEventListener('beforeunload',()=>{
+				sessionStorage.setItem('store',JSON.stringify(this.$store.state))
+			})
 		},
 		methods:{
 			exit(){
@@ -90,7 +93,9 @@
 	.el-aside {
 		background-color: #ffffff;
 		color: #333;
-		height: 2000px;
+		display: block;
+		left: 0;
+		top: 60px;
 	}
 
 	.el-main {

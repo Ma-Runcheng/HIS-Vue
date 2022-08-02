@@ -35,11 +35,9 @@
 		<el-table :data="cost" border show-summary style="width: 100%">
 			<el-table-column type="selection" width="55">
 			</el-table-column>
-			<el-table-column prop="" label="项目名称" width="180">
+			<el-table-column prop="" label="药品名称" width="180">
 			</el-table-column>
 			<el-table-column prop="" label="单价">
-			</el-table-column>
-			<el-table-column prop="" label="类型">
 			</el-table-column>
 			<el-table-column prop="" label="规格">
 			</el-table-column>

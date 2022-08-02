@@ -9,12 +9,14 @@
 				         <i class="el-icon-document"></i>
 				         病历号
 				       </template>
+					   {{$store.state.patientinfo.caseNumber}}
 			</el-descriptions-item>
 			<el-descriptions-item>
 				 <template slot="label">
 				         <i class="el-icon-user"></i>
 				         姓名
 				       </template>
+					   {{$store.state.patientinfo.realName}}
 			</el-descriptions-item>
 		</el-descriptions>
 		<hr>
@@ -37,13 +39,10 @@
 			<el-form-item label="体格检查" placeholder="请输入体格检查">
 				<el-input v-model="Medicalrecord.physique"></el-input>
 			</el-form-item>
-			<el-form-item label="检查检验建议" placeholder="请输入检查检验建议">
-				<el-input v-model="Medicalrecord.proposal"></el-input>
-			</el-form-item>
 			<el-form-item label="注意事项" placeholder="请输入注意事项">
 				<el-input v-model="Medicalrecord.careful"></el-input>
 			</el-form-item>
-			<el-form-item label="诊断结果">
+			<el-form-item label="诊断">
 				<el-table ref="multipleTable" :data="disease" style="width: 100%">
 					<el-table-column type="selection" width="55">
 					</el-table-column>
@@ -118,7 +117,9 @@
 
 			},
 			searchData() {
-
+				this.axios.get('http://localhost:8080/register/selectRegister?cn='+this.cn+'&rn='+this.rn).then((res)=>{
+					this.patient=res.data
+				})
 			},
 			doInsert() {
 

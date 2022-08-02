@@ -9,12 +9,14 @@
 				         <i class="el-icon-document"></i>
 				         病历号
 				       </template>
+					   {{this.$store.state.patientinfo.caseNumber}}
 			</el-descriptions-item>
 			<el-descriptions-item>
 				 <template slot="label">
 				         <i class="el-icon-user"></i>
 				         姓名
 				       </template>
+					   {{this.$store.state.patientinfo.realName}}
 			</el-descriptions-item>
 		</el-descriptions>
 		<hr>
@@ -24,8 +26,6 @@
 			<el-table-column prop="" label="药品名称" width="180">
 			</el-table-column>
 			<el-table-column prop="" label="药品规格">
-			</el-table-column>
-			<el-table-column prop="" label="单价">
 			</el-table-column>
 			<el-table-column prop="" label="单价">
 			</el-table-column>
