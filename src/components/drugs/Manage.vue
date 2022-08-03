@@ -10,18 +10,21 @@
 		<el-card>
 			<!-- 搜索框 -->
 			<el-row>
-				<el-col :span="10">
+				<el-col :span="8">
 					<el-input placeholder="请输入药品编码" v-model="input1"></el-input>
 				</el-col>
-				<el-col :span="11">
-					<el-input placeholder="请输入药品名称" v-model="input2">
+				<el-col :span="8">
+					<el-input placeholder="请输入药品名称" v-model="input2"></el-input>
+				</el-col>
+				<el-col :span="8">
+					<el-input placeholder="请输入拼音助记码" v-model="input3">
 						<el-button slot="append" icon="el-icon-search" @click="drugSearch"></el-button>
 					</el-input>		
 				</el-col>
 			</el-row>
 		</el-card>
 		<hr>
-		<el-button type="primary" @click="addDialogVisible=true">增加药品</el-button>
+		<el-button type="primary" @click="addDialog">增加药品</el-button>
 		<hr>
 		<!-- 药品列表卡片 -->
 		<el-card>
@@ -69,8 +72,8 @@
 			    @size-change="handleSizeChange"
 			    @current-change="handleCurrentChange"
 			    :current-page="pagenum"
-			    :page-sizes="[10, 20, 30, 40]"
-			    :page-size="10"
+			    :page-sizes="[6, 10, 20, 40]"
+			    :page-size="6"
 			    layout="total, sizes, prev, pager, next, jumper"
 			    :total="total">
 			</el-pagination>
@@ -79,13 +82,14 @@
 		<el-dialog
 			title="增加药品"
 			:visible.sync="addDialogVisible"
-			width="30%">
+			width="30%"
+			@close="addDialogClosed">
 			<el-form label-width="80px">
 				<el-form-item label="id">
-					<el-input v-model="addDrug.id"></el-input>
+					<el-input disabled v-model="addDrug.id"></el-input>
 				</el-form-item>
 				<el-form-item label="药品编码">
-					<el-input v-model="addDrug.drugCode"></el-input>
+					<el-input disabled v-model="addDrug.drugCode"></el-input>
 				</el-form-item>
 				<el-form-item label="名称">
 					<el-input v-model="addDrug.drugName"></el-input>
@@ -98,9 +102,6 @@
 				</el-form-item>
 				<el-form-item label="单价">
 					<el-input v-model="addDrug.drugPrice"></el-input>
-				</el-form-item>
-				<el-form-item label="助记码">
-					<el-input v-model="addDrug.mnemonicCode"></el-input>
 				</el-form-item>
 				<el-form-item>
 					<el-button @click="addConfirm">确定</el-button>
@@ -118,7 +119,7 @@
 					<el-input disabled v-model="updateDrug.id"></el-input>
 				</el-form-item>
 				<el-form-item label="药品编码">
-					<el-input disabled v-model="updateDrug.drugCode"></el-input>
+					<el-input v-model="updateDrug.drugCode"></el-input>
 				</el-form-item>
 				<el-form-item label="名称">
 					<el-input v-model="updateDrug.drugName"></el-input>
@@ -131,9 +132,6 @@
 				</el-form-item>
 				<el-form-item label="单价">
 					<el-input v-model="updateDrug.drugPrice"></el-input>
-				</el-form-item>
-				<el-form-item label="助记码">
-					<el-input v-model="updateDrug.mnemonicCode"></el-input>
 				</el-form-item>
 				<el-form-item>
 					<el-button @click="updateConfirm">确定</el-button>
@@ -149,12 +147,11 @@
 	export default {
 		data() {
 			return {
-				input: '',
 				select: '',
 				drug_list: [],
 				sublist:[],
 				pagenum:1,
-				pagesize:10,
+				pagesize:6,
 				total:1,
 				updateDialogVisible:false,
 				addDialogVisible:false,
@@ -162,6 +159,7 @@
 				addDrug:{},
 				input1:'',
 				input2:'',
+				input3:'',
 			}
 		},
 		methods: {
@@ -170,7 +168,6 @@
 				this.drug_list=await this.$axios.get("http://localhost:8080/drug/list").then(function(res) {
 					return res.data
 				})
-				// console.log(this.drug_list);
 				this.dopaging()
 			},
 			//分页函数
@@ -189,16 +186,47 @@
 				this.pagenum=newPage
 				this.dopaging()
 			},
+			//展示添加药品信息的对话框
+			addDialog(){
+				this.addDialogVisible=true
+				let len=this.drug_list.length
+				this.addDrug.id=this.drug_list[len-1].id+1
+				this.addDrug.drugCode=parseInt(this.drug_list[len-1].drugCode)+1
+			},
+			// 监听添加药品对话框的关闭事件
+			addDialogClosed(){
+				for(let i in this.addDrug){
+					this.addDrug[i]=''
+				}
+			},
+			//提交增加结果
+			async addConfirm(){
+				this.addDialogVisible=false
+				// console.log(this.addDrug);
+				await this.$axios.get("http://localhost:8080/drug/insert",{
+					params:{
+						id:this.addDrug.id,
+						drugCode:this.addDrug.drugCode,
+						drugName:this.addDrug.drugName,
+						drugFormat:this.addDrug.drugFormat,
+						manufacturer:this.addDrug.manufacturer,
+						drugPrice:this.addDrug.drugPrice,
+						mnemonicCode:'',
+						delMark:1
+					}
+				})
+				this.getDrugList()
+			},
 			// 展示修改药品信息的对话框
-			async updateDialog(row){
+			updateDialog(row){
 				this.updateDialogVisible=true
 				let obj = JSON.parse(JSON.stringify(row))
 				this.updateDrug=obj
 			},
+			
 			//提交修改结果
 			async updateConfirm(){
 				this.updateDialogVisible=false
-				console.log(this.updateDrug);
 				await this.$axios.get("http://localhost:8080/drug/update",{
 					params:{
 						id:this.updateDrug.id,
@@ -207,7 +235,7 @@
 						drugFormat:this.updateDrug.drugFormat,
 						manufacturer:this.updateDrug.manufacturer,
 						drugPrice:this.updateDrug.drugPrice,
-						mnemonicCode:this.updateDrug.mnemonicCode
+						mnemonicCode:''
 					}
 				})
 				this.getDrugList()
@@ -228,28 +256,12 @@
 				await this.$axios.get("http://localhost:8080/drug/delete?id="+id)
 				this.getDrugList()
 			},
-			//提交增加结果
-			async addConfirm(){
-				this.addDialogVisible=false
-				// console.log(this.addDrug);
-				await this.$axios.get("http://localhost:8080/drug/insert",{
-					params:{
-						id:this.addDrug.id,
-						drugCode:this.addDrug.drugCode,
-						drugName:this.addDrug.drugName,
-						drugFormat:this.addDrug.drugFormat,
-						manufacturer:this.addDrug.manufacturer,
-						drugPrice:this.addDrug.drugPrice,
-						mnemonicCode:this.addDrug.mnemonicCode,
-						delMark:1
-					}
-				})
-				this.getDrugList()
-			},
+			
+			//搜索药品信息
 			async drugSearch(){
-				this.drug_list=await this.$axios.get("http://localhost:8080/drug/list?code="+this.input1+"&name="+this.input2).then(res => res.data)
+				this.drug_list=await this.$axios.get("http://localhost:8080/drug/list?code="+this.input1+"&name="+this.input2+"&m_code="+this.input3).then(res => res.data)
 				this.dopaging()
-			}
+			},
 		},
 		created(){
 			let that =this
