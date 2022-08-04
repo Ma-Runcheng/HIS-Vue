@@ -12,38 +12,36 @@
 				<el-input v-model="realname" placeholder="请输入患者姓名"></el-input>
 			</el-form-item>
 			<el-form-item>
-				<el-button @click="" icon="el-icon-search">搜索</el-button>
+				<el-button @click="selectRegister" icon="el-icon-search">搜索</el-button>
 			</el-form-item>
 		</el-form>
-		<el-table :data="tableData" border style="width: 100%">
-		    <el-table-column prop="index" label="编号" width="120">
+		<el-table :data="register" border style="width: 100%">
+			<el-table-column type="index" label="编号" width="120">
 			</el-table-column>
-			<el-table-column prop="" label="患者姓名" width="120">
+			<el-table-column prop="realName" label="患者姓名" width="120">
 			</el-table-column>
-			<el-table-column prop="" label="患者病历号" width="120">
+			<el-table-column prop="caseNumber" label="患者病历号" width="120">
 			</el-table-column>
-			<el-table-column prop="" label="性别" width="120">
+			<el-table-column prop="gender" label="性别" width="120">
 			</el-table-column>
-			<el-table-column prop="" label="年龄" width="120">
+			<el-table-column prop="age" label="年龄" width="120">
 			</el-table-column>
 			<el-table-column fixed="right" label="操作" width="100">
 				<template slot-scope="scope">
-					<el-button @click="" type="text" size="small">费用查询</el-button>
+					<el-button @click="queryCost(scope.row)" type="text" size="small">费用查询</el-button>
 				</template>
 			</el-table-column>
 		</el-table>
-		<el-table :data="cost" border show-summary style="width: 100%">
-			<el-table-column type="selection" width="55">
+		<el-table :data="cost" style="width: 100%">
+			<el-table-column prop="registerId" label="药品名称" width="180">
 			</el-table-column>
-			<el-table-column prop="" label="药品名称" width="180">
+			<el-table-column prop="drugPrice" label="单价">
 			</el-table-column>
-			<el-table-column prop="" label="单价">
+			<el-table-column prop="drugFormat" label="规格">
 			</el-table-column>
-			<el-table-column prop="" label="规格">
+			<el-table-column prop="drugNumber" label="数量">
 			</el-table-column>
-			<el-table-column prop="" label="数量">
-			</el-table-column>
-			<el-table-column prop="" label="状态">
+			<el-table-column prop="drugState" label="状态">
 			</el-table-column>
 		</el-table>
 	</div>
@@ -53,13 +51,26 @@
 	export default {
 		data() {
 			return {
+				register: [],
 				casenumber: '',
 				realname: '',
+				cost: []
 			}
 		},
 		methods: {
 			goBack() {
 				this.$router.push("/outpatient")
+			},
+			selectRegister() {
+				this.axios.get('http://localhost:8080/register/selectRegister?cn=' + this.casenumber + '&rn=' + this
+					.realname).then((res) => {
+					this.register = res.data
+				})
+			},
+			queryCost(row) {
+				this.axios.get('http://localhost:8080/prescription/selectPrescription?registerId=' + row.id).then((res) => {
+					this.cost = res.data
+				})
 			}
 		},
 	}

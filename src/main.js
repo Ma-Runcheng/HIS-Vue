@@ -16,7 +16,6 @@ Vue.prototype.$axios=axios;
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts;
 
-
 Vue.config.productionTip = false
 new Vue({
   router,

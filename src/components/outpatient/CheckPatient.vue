@@ -24,6 +24,8 @@
 			</el-table-column>
 			<el-table-column prop="visitDate" label="挂号时间" width="200px">
 			</el-table-column>
+			<el-table-column prop="visitState" label="状态" width="200px">
+			</el-table-column>
 			<el-table-column label="操作">
 				<template slot-scope="scope">
 					<el-button @click="callNumber(scope.row)">看诊</el-button>
@@ -57,6 +59,7 @@
 			},
 			callNumber(row){
 				this.$store.commit('patientinfo',row)
+				this.axios.post('http://localhost:8080/register/updateVisitState?vs=2&id='+row.id)
 			},
 			goBack() {
 				this.$router.push("/outpatient")

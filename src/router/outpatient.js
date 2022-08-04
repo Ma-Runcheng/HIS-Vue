@@ -4,7 +4,7 @@ import medicalrecord from '../components/outpatient/MedicalRecord.vue'
 import confirm from '../components/outpatient/Confirm.vue'
 import prescription from '../components/outpatient/Prescription.vue'
 import querycost from '../components/outpatient/QueryCost.vue'
-
+		
 export default [
 	{
 		path:'/outpatient',
