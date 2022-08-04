@@ -135,7 +135,7 @@
 				this.$router.push("/outpatient")
 			},
 			searchDrug() {
-				this.axios.get('http://localhost:8080/druginfo/searchDrug?drugname=' + this.drugname + '&mnemoniccode=' +
+				this.axios.get('http://localhost:8080/drug/searchDrug?drugname=' + this.drugname + '&mnemoniccode=' +
 					this.mnemoniccode).then((
 					res) => {
 					this.druginfo = res.data
